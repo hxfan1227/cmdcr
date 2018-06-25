@@ -1,0 +1,12 @@
+Package: cmdcr
+Type: Package
+Title: Download and process the data from China Meteorological Data Service Center (CMDC)
+Version: 0.1.0
+Author: c(person("Hongxiang", "Fan", , "fanhongxiang13@mails.ucas.ac.cn", c("aut", "cre")))
+Maintainer: Fan Hongxiang <fanhongxiang13@mails.ucas.ac.cn>
+Description: A toolset in Rfor downloading and processing meteorological data from China Meteorological Data Service Center
+License: GPL-3 + file LICENSE
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/hxfan1227/cmdcr
+BugReports: https://github.com/hxfan1227/cmdcr/issues
