@@ -6,7 +6,7 @@ NULL
 #' @export
 get_data_type <- function(fname){
   # check the validity of the file name
-  if (!is_valid_fname(fname)) {
+  if (!cmdcr::is_valid_fnameis_valid_fname(fname)) {
     stop(fname, " is not a valid file.\n")
   }
   return(stringr::str_split(basename(fname), pattern = "-", simplify = T)[2])
