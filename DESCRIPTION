@@ -13,3 +13,4 @@ BugReports: https://github.com/hxfan1227/cmdcr/issues
 Imports: data.table,
     lubridate,
     stringr
+RoxygenNote: 6.0.1
