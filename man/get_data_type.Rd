@@ -2,16 +2,21 @@
 % Please edit documentation in R/get_data_type.R
 \name{get_data_type}
 \alias{get_data_type}
-\title{Get the type of the meteorological variable according to the file name.}
+\alias{get_data_date}
+\title{Get the type and date of the meteorological variable according to the file name.}
 \usage{
 get_data_type(fname)
+
+get_data_date(fname)
 }
 \arguments{
 \item{fname}{Character. The full name of the file to be processed.}
 }
 \value{
-The type of the meteorological variable.
+\code{get_data_type} returns the type of the meteorological variable.
+
+\code{get_data_date} returns a character indicating the date of the meteorological variable.
 }
 \description{
-Get the type of the meteorological variable according to the file name.
+Get the type and date of the meteorological variable according to the file name.
 }

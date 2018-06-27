@@ -1,15 +1,28 @@
 #' @importFrom stringr str_detect
 NULL
-#' Get the type of the meteorological variable according to the file name.
+#' Get the type and date of the meteorological variable according to the file name.
 #' @param fname Character. The full name of the file to be processed.
-#' @return The type of the meteorological variable.
+#' @return \code{get_data_type} returns the type of the meteorological variable.
+#'
+#' \code{get_data_date} returns a character indicating the date of the meteorological variable.
 #' @export
 get_data_type <- function(fname){
   # check the validity of the file name
-  if (!cmdcr::is_valid_fnameis_valid_fname(fname)) {
+  fbasename <- basename(fname)
+  if (!cmdcr::is_valid_fname(fname)) {
     stop(fname, " is not a valid file.\n")
   }
-  return(stringr::str_split(basename(fname), pattern = "-", simplify = T)[2])
+  return(stringr::str_split(fbasename, pattern = "-", simplify = T)[2])
+}
+
+#' @rdname get_data_type
+#' @export
+get_data_date <- function(fname){
+  fbasename <- basename(fname)
+  if(!cmdcr::is_valid_fname(fname)){
+    stop(fname, " is not a valid file.\n")
+  }
+  return(stringr::str_extract_all(fbasename, "\\d{6}", simplify = T))
 }
 #' Check the validity of the file name.
 #' @param fname Character. The full name of the file to be processed.
