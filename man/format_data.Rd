@@ -3,12 +3,33 @@
 \name{format_data}
 \alias{format_data}
 \alias{format_data.WIN}
+\alias{format_data.PRS}
+\alias{format_data.EVP}
+\alias{format_data.TEM}
+\alias{format_data.RHU}
+\alias{format_data.PRE}
+\alias{format_data.SSD}
+\alias{format_data.GST}
 \title{Tidy the meteorological data.}
 \usage{
 format_data(x, ...)
 
 \method{format_data}{WIN}(x, base_direction = "N", outdir, prefix = "F",
   ...)
+
+\method{format_data}{PRS}(x, outdir, prefix = "F", ...)
+
+\method{format_data}{EVP}(x, outdir, prefix = "F", ...)
+
+\method{format_data}{TEM}(x, outdir, prefix = "F", ...)
+
+\method{format_data}{RHU}(x, outdir, prefix = "F", ...)
+
+\method{format_data}{PRE}(x, outdir, prefix = "F", ...)
+
+\method{format_data}{SSD}(x, outdir, prefix = "F", ...)
+
+\method{format_data}{GST}(x, outdir, prefix = "F", ...)
 }
 \arguments{
 \item{x}{Charater. Full name of file to be processed. Generate with \code{\link[cmdcr]{read_fname}}.}
@@ -17,7 +38,8 @@ format_data(x, ...)
 
 \item{base_direction}{Character. Direction of 0 degree. Should be one of (E)ast, (W)est, (S)outh and (N)orth.}
 
-\item{outdir}{Character. Output directory.}
+\item{outdir}{Character. Output directory.
+If \code{missing(outdir)} is TRUE, the function will return the data in \code{data.table} format.}
 
 \item{prefix}{Character. Prefix of the output file name.}
 }
