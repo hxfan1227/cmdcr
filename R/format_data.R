@@ -6,10 +6,12 @@ NULL
 #' @param outdir Character. Output directory.
 #' @param prefix Character. Prefix of the output file name.
 #' @param ... Not used yet.
+#' @export
 format_data <- function(x, ...){
   UseMethod("format_data")
 }
 #' @rdname format_data
+#' @export
 format_data.WIN <- function(x,
                             base_direction = "N",
                             outdir,
