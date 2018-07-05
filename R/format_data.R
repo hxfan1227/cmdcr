@@ -17,7 +17,7 @@ format_data <- function(x, ...){
 format_data.WIN <- function(x,
                             base_direction = "N",
                             outdir,
-                            prefix = "F",
+                            prefix = "",
                             ...){
   dt = data.table::fread(x)
   dt = dt[, lapply(.SD, cmdcr::remove_missing_data)]
@@ -52,7 +52,7 @@ format_data.WIN <- function(x,
 #' @export
 format_data.PRS <- function(x,
                             outdir,
-                            prefix = "F",
+                            prefix = "",
                             ...){
   dt = data.table::fread(x)
   dt = dt[, lapply(.SD, cmdcr::remove_missing_data)]
@@ -81,7 +81,7 @@ format_data.PRS <- function(x,
 #' @export
 format_data.EVP <- function(x,
                             outdir,
-                            prefix = "F",
+                            prefix = "",
                             ...){
   dt = data.table::fread(x)
   dt = dt[, lapply(.SD, cmdcr::remove_missing_data)]
@@ -110,7 +110,7 @@ format_data.EVP <- function(x,
 #' @export
 format_data.TEM <- function(x,
                             outdir,
-                            prefix = "F",
+                            prefix = "",
                             ...){
   dt = data.table::fread(x)
   dt = dt[, lapply(.SD, cmdcr::remove_missing_data)]
@@ -141,7 +141,7 @@ format_data.TEM <- function(x,
 #' @export
 format_data.RHU <- function(x,
                             outdir,
-                            prefix = "F",
+                            prefix = "",
                             ...){
   dt = data.table::fread(x)
   dt = dt[, lapply(.SD, cmdcr::remove_missing_data)]
@@ -170,7 +170,7 @@ format_data.RHU <- function(x,
 #' @export
 format_data.PRE <- function(x,
                             outdir,
-                            prefix = "F",
+                            prefix = "",
                             ...){
   dt = data.table::fread(x)
   dt = dt[, lapply(.SD, cmdcr::remove_missing_data)]
@@ -201,7 +201,7 @@ format_data.PRE <- function(x,
 #' @export
 format_data.SSD <- function(x,
                             outdir,
-                            prefix = "F",
+                            prefix = "",
                             ...){
   dt = data.table::fread(x)
   dt = dt[, lapply(.SD, cmdcr::remove_missing_data)]
@@ -228,7 +228,7 @@ format_data.SSD <- function(x,
 #' @export
 format_data.GST <- function(x,
                             outdir,
-                            prefix = "F",
+                            prefix = "",
                             ...){
   dt = data.table::fread(x)
   dt = dt[, lapply(.SD, cmdcr::remove_missing_data)]
