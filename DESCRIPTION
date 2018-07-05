@@ -14,3 +14,4 @@ Imports: data.table,
     lubridate,
     stringr
 RoxygenNote: 6.0.1
+ByteCompile: true
