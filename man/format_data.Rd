@@ -14,22 +14,21 @@
 \usage{
 format_data(x, ...)
 
-\method{format_data}{WIN}(x, base_direction = "N", outdir, prefix = "F",
-  ...)
+\method{format_data}{WIN}(x, base_direction = "N", outdir, prefix = "", ...)
 
-\method{format_data}{PRS}(x, outdir, prefix = "F", ...)
+\method{format_data}{PRS}(x, outdir, prefix = "", ...)
 
-\method{format_data}{EVP}(x, outdir, prefix = "F", ...)
+\method{format_data}{EVP}(x, outdir, prefix = "", ...)
 
-\method{format_data}{TEM}(x, outdir, prefix = "F", ...)
+\method{format_data}{TEM}(x, outdir, prefix = "", ...)
 
-\method{format_data}{RHU}(x, outdir, prefix = "F", ...)
+\method{format_data}{RHU}(x, outdir, prefix = "", ...)
 
-\method{format_data}{PRE}(x, outdir, prefix = "F", ...)
+\method{format_data}{PRE}(x, outdir, prefix = "", ...)
 
-\method{format_data}{SSD}(x, outdir, prefix = "F", ...)
+\method{format_data}{SSD}(x, outdir, prefix = "", ...)
 
-\method{format_data}{GST}(x, outdir, prefix = "F", ...)
+\method{format_data}{GST}(x, outdir, prefix = "", ...)
 }
 \arguments{
 \item{x}{Charater. Full name of file to be processed. Generate with \code{\link[cmdcr]{read_fname}}.}
