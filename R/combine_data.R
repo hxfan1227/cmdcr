@@ -1,4 +1,5 @@
 #' @import data.table
+#' @import plyr
 #' @importFrom stringr str_detect
 NULL
 #' Combine meteorological data into a single file.
