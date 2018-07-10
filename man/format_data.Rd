@@ -31,7 +31,7 @@ format_data(x, ...)
 \method{format_data}{GST}(x, outdir, prefix = "", ...)
 }
 \arguments{
-\item{x}{Charater. Full name of file to be processed. Generate with \code{\link[cmdcr]{read_fname}}.}
+\item{x}{Charater. Full name of file to be processed. Generate with \code{\link[cmdcr]{read_data}}.}
 
 \item{...}{Not used yet.}
 

@@ -2,6 +2,7 @@ NULL
 #' Set column names for each dataset.
 #' @param x  Dataset to be processed.
 #' @param ... Not used yet.
+#' @export
 set_colnames <- function(x, ...){
   UseMethod("set_colnames")
 }

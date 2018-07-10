@@ -1,7 +1,7 @@
 #' @import data.table
 NULL
 #' Tidy the meteorological data.
-#' @param x Charater. Full name of file to be processed. Generate with \code{\link[cmdcr]{read_fname}}.
+#' @param x Charater. Full name of file to be processed. Generate with \code{\link[cmdcr]{read_data}}.
 #' @param base_direction Character. Direction of 0 degree. Should be one of (E)ast, (W)est, (S)outh and (N)orth.
 #' @param outdir Character. Output directory.
 #' If \code{missing(outdir)} is TRUE, the function will return the data in \code{data.table} format.

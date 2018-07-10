@@ -33,7 +33,7 @@ combine_data_ <- function(dtype, flist, outdir, subfolder = T, maxsize = 512){
   f.list <- flist[stringr::str_detect(flist, dtype)]
   f.size <- sum(file.size(f.list)/1024^2)
   if (f.size <= maxsize){
-    dt.list <- plyr::alply(f.list, 1, data.table::fread)
+    dt.list <- plyr::alply(f.list, 1, cmdcr::read_data)
     dt <- do.call(plyr::rbind.fill, dt.list)
     data.table::setDT(dt)
     if (subfolder) {
