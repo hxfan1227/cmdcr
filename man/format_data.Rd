@@ -14,7 +14,8 @@
 \usage{
 format_data(x, ...)
 
-\method{format_data}{WIN}(x, base_direction = "N", outdir, prefix = "", ...)
+\method{format_data}{WIN}(x, base_direction = "N", outdir, prefix = "",
+  ...)
 
 \method{format_data}{PRS}(x, outdir, prefix = "", ...)
 
