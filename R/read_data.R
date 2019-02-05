@@ -4,14 +4,10 @@ NULL
 #' @param fname Character. Full name of the file to be processed.
 #' @param as.data.table Logical. If \code{True}, a data.table will return.
 #' @export
-read_data <- function(fname, as.data.table = T){
+read_data <- function(fname){
   data.type <- cmdcr::get_data_type(fname)
-  class(fname) = c(class(fname), data.type)
-  if (as.data.table){
-    dt <- data.table::fread(fname)
-    class(dt) <- c(class(dt), data.type)
-    return(cmdcr::set_colnames(dt))
-  } else{
-    return(fname)
-  }
+  dt <- data.table::fread(fname)
+  data.table::setattr(dt, "class", c("data.table", "data.frame", data.type))
+  dt_ <- cmdcr::format_data(dt)
+  return(cmdcr::set_colnames(dt_))
 }
