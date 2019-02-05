@@ -10,8 +10,7 @@ read_data <- function(fname, as.data.table = T){
   if (as.data.table){
     dt <- data.table::fread(fname)
     class(dt) <- c(class(dt), data.type)
-    cmdcr::set_colnames(dt)
-    return(dt)
+    return(cmdcr::set_colnames(dt))
   } else{
     return(fname)
   }
