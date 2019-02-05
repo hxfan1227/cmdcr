@@ -7,7 +7,8 @@ NULL
 read_data <- function(fname){
   data.type <- cmdcr::get_data_type(fname)
   dt <- data.table::fread(fname)
-  data.table::setattr(dt, "class", c("data.table", "data.frame", data.type))
-  dt_ <- cmdcr::format_data(dt)
-  return(cmdcr::set_colnames(dt_))
+  dt.class <- class(dt)
+  class(dt) <- c(data.type, dt.class)
+  dt <- cmdcr::format_data(dt)
+  return(cmdcr::set_colnames(dt))
 }
