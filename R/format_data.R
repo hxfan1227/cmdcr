@@ -1,11 +1,8 @@
 #' @import data.table
 NULL
-#' Tidy the meteorological data.
-#' @param dt A \code{data.table}.
+#' Format the meteorological data.
+#' @param x A \code{cmdc} object. Created by \link[cmdcr]{import_cmdc_data}
 #' @param base_direction Character. Direction of 0 degree. Should be one of (E)ast, (W)est, (S)outh and (N)orth.
-#' @param outdir Character. Output directory.
-#' If \code{missing(outdir)} is TRUE, the function will return the data in \code{data.table} format.
-#' @param prefix Character. Prefix of the output file name.
 #' @param ... Not used yet.
 #' @export
 format_data <- function(x, ...){
@@ -14,13 +11,13 @@ format_data <- function(x, ...){
 
 #' @rdname format_data
 #' @export
-format_data.WIN <- function(dt,
+format_data.WIN <- function(x,
                             base_direction = "N",
                             outdir,
                             prefix = "",
                             ...){
-  dt = dt[, lapply(.SD, cmdcr::remove_missing_data)]
-  dt[, ':='(
+  x$data <- x$data[, lapply(.SD, cmdcr::remove_missing_data)]
+  x$data[, ':='(
     # latitude
     V2 = (V2 - (V2 %/% 100) * 100) / 60 + (V2 %/% 100),
     # longitude
@@ -38,14 +35,7 @@ format_data.WIN <- function(dt,
     # extreme wind direction
     V12 = cmdcr::cal_wind_direction(V12, base_direction = base_direction)
   )]
-  # class(dt) <- c(class(dt), 'WIN')
-  if (missing(outdir)){
-    return(dt)
-  } else{
-    if (dir.exists(outdir)){
-      fwrite(dt, file.path(outdir, paste0(prefix, basename(x))))
-    }
-  }
+  x
 }
 
 #' @rdname format_data
@@ -54,8 +44,8 @@ format_data.PRS <- function(x,
                             outdir,
                             prefix = "",
                             ...){
-  dt = dt[, lapply(.SD, cmdcr::remove_missing_data)]
-  dt[, ':='(
+  x$data = x$data[, lapply(.SD, cmdcr::remove_missing_data)]
+  x$data[, ':='(
     # latitude
     V2 = (V2 - (V2 %/% 100) * 100) / 60 + (V2 %/% 100),
     # longitude
@@ -67,14 +57,7 @@ format_data.PRS <- function(x,
     # maximum pressure
     V9 = ifelse(V9 > 20000, (V9 - 20000) * 0.1, V9 * 0.1)
   )]
-  # class(dt) <- c(class(dt), 'PRS')
-  if (missing(outdir)){
-    return(dt)
-  } else{
-    if (dir.exists(outdir)){
-      fwrite(dt, file.path(outdir, paste0(prefix, basename(x))))
-    }
-  }
+  x
 }
 
 #' @rdname format_data
@@ -83,8 +66,8 @@ format_data.EVP <- function(x,
                             outdir,
                             prefix = "",
                             ...){
-  dt = dt[, lapply(.SD, cmdcr::remove_missing_data)]
-  dt[, ':='(
+  x$data = x$data[, lapply(.SD, cmdcr::remove_missing_data)]
+  x$data[, ':='(
     # latitude
     V2 = (V2 - (V2 %/% 100) * 100) / 60 + (V2 %/% 100),
     # longitude
@@ -96,14 +79,7 @@ format_data.EVP <- function(x,
     # large evp
     V9 = ifelse(V9 > 1000, (V9 - 1000) * 0.1, V9 * 0.1)
   )]
-  # class(dt) <- c(class(dt), 'EVP')
-  if (missing(outdir)){
-    return(dt)
-  } else{
-    if (dir.exists(outdir)){
-      fwrite(dt, file.path(outdir, paste0(prefix, basename(x))))
-    }
-  }
+  x
 }
 
 #' @rdname format_data
@@ -112,8 +88,8 @@ format_data.TEM <- function(x,
                             outdir,
                             prefix = "",
                             ...){
-  dt = dt[, lapply(.SD, cmdcr::remove_missing_data)]
-  dt[, ':='(
+  x$data = x$data[, lapply(.SD, cmdcr::remove_missing_data)]
+  x$data[, ':='(
     # latitude
     V2 = (V2 - (V2 %/% 100) * 100) / 60 + (V2 %/% 100),
     # longitude
@@ -127,14 +103,7 @@ format_data.TEM <- function(x,
     # minimum temperature
     V10 = V10 * 0.1
   )]
-  # class(dt) <- c(class(dt), 'TEM')
-  if (missing(outdir)){
-    return(dt)
-  } else{
-    if (dir.exists(outdir)){
-      fwrite(dt, file.path(outdir, paste0(prefix, basename(x))))
-    }
-  }
+  x
 }
 
 #' @rdname format_data
@@ -143,8 +112,8 @@ format_data.RHU <- function(x,
                             outdir,
                             prefix = "",
                             ...){
-  dt = dt[, lapply(.SD, cmdcr::remove_missing_data)]
-  dt[, ':='(
+  x$data = x$data[, lapply(.SD, cmdcr::remove_missing_data)]
+  x$data[, ':='(
     # latitude
     V2 = (V2 - (V2 %/% 100) * 100) / 60 + (V2 %/% 100),
     # longitude
@@ -156,14 +125,7 @@ format_data.RHU <- function(x,
     # average humidity (mannual)
     V9 = ifelse(V9 > 300, (V9 - 300) * 0.01, V9 * 0.01)
   )]
-  # class(dt) <- c(class(dt), 'RHU')
-  if (missing(outdir)){
-    return(dt)
-  } else{
-    if (dir.exists(outdir)){
-      fwrite(dt, file.path(outdir, paste0(prefix, basename(x))))
-    }
-  }
+  x
 }
 
 #' @rdname format_data
@@ -172,8 +134,8 @@ format_data.PRE <- function(x,
                             outdir,
                             prefix = "",
                             ...){
-  dt = dt[, lapply(.SD, cmdcr::remove_missing_data)]
-  dt[, ':='(
+  x$data = x$data[, lapply(.SD, cmdcr::remove_missing_data)]
+  x$data[, ':='(
     # latitude
     V2 = (V2 - (V2 %/% 100) * 100) / 60 + (V2 %/% 100),
     # longitude
@@ -187,14 +149,7 @@ format_data.PRE <- function(x,
     # 20-20 precipitation
     V10 = V10 * 0.1
   )]
-  # class(dt) <- c(class(dt), 'PRE')
-  if (missing(outdir)){
-    return(dt)
-  } else{
-    if (dir.exists(outdir)){
-      fwrite(dt, file.path(outdir, paste0(prefix, basename(x))))
-    }
-  }
+  x
 }
 
 #' @rdname format_data
@@ -203,8 +158,8 @@ format_data.SSD <- function(x,
                             outdir,
                             prefix = "",
                             ...){
-  dt = dt[, lapply(.SD, cmdcr::remove_missing_data)]
-  dt[, ':='(
+  x$data = x$data[, lapply(.SD, cmdcr::remove_missing_data)]
+  x$data[, ':='(
     # latitude
     V2 = (V2 - (V2 %/% 100) * 100) / 60 + (V2 %/% 100),
     # longitude
@@ -214,14 +169,7 @@ format_data.SSD <- function(x,
     # Sun hours
     V8 = V8 * 0.1
   )]
-  # class(dt) <- c(class(dt), 'SSD')
-  if (missing(outdir)){
-    return(dt)
-  } else{
-    if (dir.exists(outdir)){
-      fwrite(dt, file.path(outdir, paste0(prefix, basename(x))))
-    }
-  }
+  x
 }
 
 #' @rdname format_data
@@ -230,8 +178,8 @@ format_data.GST <- function(x,
                             outdir,
                             prefix = "",
                             ...){
-  dt = dt[, lapply(.SD, cmdcr::remove_missing_data)]
-  dt[, ':='(
+  x$data = x$data[, lapply(.SD, cmdcr::remove_missing_data)]
+  x$data[, ':='(
     # latitude
     V2 = (V2 - (V2 %/% 100) * 100) / 60 + (V2 %/% 100),
     # longitude
@@ -245,14 +193,7 @@ format_data.GST <- function(x,
     # minimum ground temperature
     V10 = ifelse(V10 < -10000, (V10 + 10000) * 0.1, V10 * 0.1)
   )]
-  # class(dt) <- c(class(dt), 'GST')
-  if (missing(outdir)){
-    return(dt)
-  } else{
-    if (dir.exists(outdir)){
-      fwrite(dt, file.path(outdir, paste0(prefix, basename(x))))
-    }
-  }
+  x
 }
 
 

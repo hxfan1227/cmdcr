@@ -5,10 +5,8 @@ NULL
 #' @param as.data.table Logical. If \code{True}, a data.table will return.
 #' @export
 read_data <- function(fname){
-  data.type <- cmdcr::get_data_type(fname)
-  dt <- data.table::fread(fname)
-  dt.class <- class(dt)
-  class(dt) <- c(data.type, dt.class)
-  dt <- cmdcr::format_data(dt)
-  return(cmdcr::set_colnames(dt))
+  cmdc <- cmdcr::import_cmdc_data(fname)
+  cmdc <- cmdcr::format_data(cmdc)
+  cmdc <- cmdcr::set_colnames(cmdc)
+  return(cmdc)
 }
