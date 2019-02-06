@@ -4,7 +4,8 @@ NULL
 #' @param ... (optional) List of \code{data.table} objects to be combined. 
 #' @param dtlist (optional) List of \code{data.table} to be combined.
 #' @param dir Character. The directory which contains the cmdc files.
-#' @param filepattern. Character. Variable to be combined.
+#' @param filepattern Character. Variable to be combined.
+#' @param year Numeric. The year of the data to be processed. 
 #' @return A \code{data.table}.
 #' @export
 rbind_cmdc_data <- function(..., 
@@ -20,6 +21,7 @@ rbind_cmdc_data <- function(...,
     dt_list <- plyr::alply(flist, 1, .fun = function(x){cmdcr::read_data(x)$data})
   }
   dt <- plyr::rbind.fill(dt_list)
+  data.table::setDT(dt)
   dt
 }
 
@@ -28,20 +30,33 @@ rbind_cmdc_data <- function(...,
 #' @export
 merge_cmdc_data <- function(..., 
                             dtlist = NULL,
-                            dir){
+                            dir, 
+                            year = NULL){
   if (missing(dir)){
     dt_list <- c(list(...), dtlist)
   } else {
-    dt_list <- list(cmdcr::rbind_cmdc_data(dir = dir, filepattern = 'PRS'),
-                    cmdcr::rbind_cmdc_data(dir = dir, filepattern = 'TEM'),
-                    cmdcr::rbind_cmdc_data(dir = dir, filepattern = 'WIN'),
-                    cmdcr::rbind_cmdc_data(dir = dir, filepattern = 'GST'),
-                    cmdcr::rbind_cmdc_data(dir = dir, filepattern = 'PRE'),
-                    cmdcr::rbind_cmdc_data(dir = dir, filepattern = 'RHU'),
-                    cmdcr::rbind_cmdc_data(dir = dir, filepattern = 'EVP'),
-                    cmdcr::rbind_cmdc_data(dir = dir, filepattern = 'SSD'))
-    dt <- Reduce(function(...) data.table::merge(..., all = T), dt_list)
-    data.table::setDT(dt)
-    dt
+      flist <- list.files(path = dir, pattern = '.TXT$', full.names = T)
+      dates <- plyr::aaply(flist, 1, cmdcr::get_data_date)
+      dates <- lubridate::ymd(paste(dates, '01', sep = ''))
+      years <- unique(lubridate::year(dates))
+            if (is.numeric(year)){
+        if(!(year %in% years)) stop(year, ' is not in ', paste(years, collapse = ','))
+        cat('Processing data of ', year, ' ...\n', sep = '')
+        plyr::a_ply(years, 1, function(x){dir.create(file.path(dir, x))})
+        plyr::a_ply(years, 1, function(x){file.copy(flist[stringr::str_detect(flist, as.character(x))], file.path(dir, x))})
+        param_dt <- data.table::data.table(dir = rep(file.path(dir, year), each = 8), 
+                                           filepattern = rep(c('PRS', 'TEM', 'WIN', 'GST',
+                                                   'PRE', 'RHU', 'EVP', 'SSD')) 
+        )
+      } else {
+        param_dt <- data.table::data.table(dir = rep(dir, each = 8), 
+                               filepattern = rep(c('PRS', 'TEM', 'WIN', 'GST',
+                                                   'PRE', 'RHU', 'EVP', 'SSD')) 
+        )
+      }
+      dt_list <- plyr::mlply(param_dt, cmdcr::rbind_cmdc_data, .progress = 'text', dtlist = NULL)
+      dt <- Reduce(function(...) merge(..., all = T), dt_list)
+      data.table::setDT(dt)
+      return(dt)
   }
 }
