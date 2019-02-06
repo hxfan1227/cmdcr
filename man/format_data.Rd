@@ -10,39 +10,33 @@
 \alias{format_data.PRE}
 \alias{format_data.SSD}
 \alias{format_data.GST}
-\title{Tidy the meteorological data.}
+\title{Format the meteorological data.}
 \usage{
 format_data(x, ...)
 
-\method{format_data}{WIN}(x, base_direction = "N", outdir, prefix = "",
-  ...)
+\method{format_data}{WIN}(x, base_direction = "N", ...)
 
-\method{format_data}{PRS}(x, outdir, prefix = "", ...)
+\method{format_data}{PRS}(x, ...)
 
-\method{format_data}{EVP}(x, outdir, prefix = "", ...)
+\method{format_data}{EVP}(x, ...)
 
-\method{format_data}{TEM}(x, outdir, prefix = "", ...)
+\method{format_data}{TEM}(x, ...)
 
-\method{format_data}{RHU}(x, outdir, prefix = "", ...)
+\method{format_data}{RHU}(x, ...)
 
-\method{format_data}{PRE}(x, outdir, prefix = "", ...)
+\method{format_data}{PRE}(x, ...)
 
-\method{format_data}{SSD}(x, outdir, prefix = "", ...)
+\method{format_data}{SSD}(x, ...)
 
-\method{format_data}{GST}(x, outdir, prefix = "", ...)
+\method{format_data}{GST}(x, ...)
 }
 \arguments{
-\item{x}{Charater. Full name of file to be processed. Generate with \code{\link[cmdcr]{read_data}}.}
+\item{x}{A \code{cmdc} object. Created by \link[cmdcr]{import_cmdc_data}}
 
 \item{...}{Not used yet.}
 
 \item{base_direction}{Character. Direction of 0 degree. Should be one of (E)ast, (W)est, (S)outh and (N)orth.}
-
-\item{outdir}{Character. Output directory.
-If \code{missing(outdir)} is TRUE, the function will return the data in \code{data.table} format.}
-
-\item{prefix}{Character. Prefix of the output file name.}
 }
 \description{
-Tidy the meteorological data.
+Format the meteorological data.
 }

@@ -25,7 +25,7 @@ set_colnames(x, ...)
 \method{set_colnames}{WIN}(x, ...)
 }
 \arguments{
-\item{x}{Dataset to be processed.}
+\item{x}{A \code{cmdc} object. Created by \link[cmdcr]{import_cmdc_data}.}
 
 \item{...}{Not used yet.}
 }

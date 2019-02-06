@@ -11,11 +11,7 @@ format_data <- function(x, ...){
 
 #' @rdname format_data
 #' @export
-format_data.WIN <- function(x,
-                            base_direction = "N",
-                            outdir,
-                            prefix = "",
-                            ...){
+format_data.WIN <- function(x, base_direction = "N", ...){
   x$data <- x$data[, lapply(.SD, cmdcr::remove_missing_data)]
   x$data[, ':='(
     # latitude
@@ -40,10 +36,7 @@ format_data.WIN <- function(x,
 
 #' @rdname format_data
 #' @export
-format_data.PRS <- function(x,
-                            outdir,
-                            prefix = "",
-                            ...){
+format_data.PRS <- function(x, ...){
   x$data = x$data[, lapply(.SD, cmdcr::remove_missing_data)]
   x$data[, ':='(
     # latitude
@@ -62,10 +55,7 @@ format_data.PRS <- function(x,
 
 #' @rdname format_data
 #' @export
-format_data.EVP <- function(x,
-                            outdir,
-                            prefix = "",
-                            ...){
+format_data.EVP <- function(x, ...){
   x$data = x$data[, lapply(.SD, cmdcr::remove_missing_data)]
   x$data[, ':='(
     # latitude
@@ -84,10 +74,7 @@ format_data.EVP <- function(x,
 
 #' @rdname format_data
 #' @export
-format_data.TEM <- function(x,
-                            outdir,
-                            prefix = "",
-                            ...){
+format_data.TEM <- function(x, ...){
   x$data = x$data[, lapply(.SD, cmdcr::remove_missing_data)]
   x$data[, ':='(
     # latitude
@@ -108,10 +95,7 @@ format_data.TEM <- function(x,
 
 #' @rdname format_data
 #' @export
-format_data.RHU <- function(x,
-                            outdir,
-                            prefix = "",
-                            ...){
+format_data.RHU <- function(x, ...){
   x$data = x$data[, lapply(.SD, cmdcr::remove_missing_data)]
   x$data[, ':='(
     # latitude
@@ -130,10 +114,7 @@ format_data.RHU <- function(x,
 
 #' @rdname format_data
 #' @export
-format_data.PRE <- function(x,
-                            outdir,
-                            prefix = "",
-                            ...){
+format_data.PRE <- function(x, ...){
   x$data = x$data[, lapply(.SD, cmdcr::remove_missing_data)]
   x$data[, ':='(
     # latitude
@@ -154,10 +135,7 @@ format_data.PRE <- function(x,
 
 #' @rdname format_data
 #' @export
-format_data.SSD <- function(x,
-                            outdir,
-                            prefix = "",
-                            ...){
+format_data.SSD <- function(x, ...){
   x$data = x$data[, lapply(.SD, cmdcr::remove_missing_data)]
   x$data[, ':='(
     # latitude
@@ -174,10 +152,7 @@ format_data.SSD <- function(x,
 
 #' @rdname format_data
 #' @export
-format_data.GST <- function(x,
-                            outdir,
-                            prefix = "",
-                            ...){
+format_data.GST <- function(x, ...){
   x$data = x$data[, lapply(.SD, cmdcr::remove_missing_data)]
   x$data[, ':='(
     # latitude

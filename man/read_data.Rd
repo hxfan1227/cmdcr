@@ -4,7 +4,7 @@
 \alias{read_data}
 \title{Read the meteorological data.}
 \usage{
-read_data(fname, as.data.table = T)
+read_data(fname)
 }
 \arguments{
 \item{fname}{Character. Full name of the file to be processed.}
