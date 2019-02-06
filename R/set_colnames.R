@@ -82,8 +82,7 @@ set_colnames.PRE <- function(x, ...){
                                          "V10" = "20_20PRE",
                                          "V11" = "PRECODE1",
                                          "V12" = "PRECODE2",
-                                         "V13" = "PRECODE3",
-                                         "V14" = "PRECODE4"))
+                                         "V13" = "PRECODE3"))
   x
 }
 
