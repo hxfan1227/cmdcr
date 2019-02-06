@@ -25,6 +25,7 @@ set_colnames.PRS <- function(x, ...){
                                          "V11" = "PRSCODE1",
                                          "V12" = "PRSCODE2",
                                          "V13" = "PRSCODE3"))
+  data.table::setkeyv(x$data, c('ID', 'Lon', 'Lat', 'H', 'Year', 'Month', 'Day'))
   x
 }
 
@@ -45,6 +46,7 @@ set_colnames.TEM <- function(x, ...){
                                          "V11" = "TEMCODE1",
                                          "V12" = "TEMCODE2",
                                          "V13" = "TEMCODE3"))
+  data.table::setkeyv(x$data, c('ID', 'Lon', 'Lat', 'H', 'Year', 'Month', 'Day'))
   x
 }
 
@@ -63,6 +65,7 @@ set_colnames.RHU <- function(x, ...){
                                          "V9" = "MinRHU",
                                          "V10" = "RHUCODE1",
                                          "V11" = "RHUCODE2"))
+  data.table::setkeyv(x$data, c('ID', 'Lon', 'Lat', 'H', 'Year', 'Month', 'Day'))
   x
 }
 
@@ -83,6 +86,7 @@ set_colnames.PRE <- function(x, ...){
                                          "V11" = "PRECODE1",
                                          "V12" = "PRECODE2",
                                          "V13" = "PRECODE3"))
+  data.table::setkeyv(x$data, c('ID', 'Lon', 'Lat', 'H', 'Year', 'Month', 'Day'))
   x
 }
 
@@ -101,6 +105,7 @@ set_colnames.EVP <- function(x, ...){
                                          "V9" = "LEVP",
                                          "V10" = "EVPCODE1",
                                          "V11" = "EVPCODE2"))
+  data.table::setkeyv(x$data, c('ID', 'Lon', 'Lat', 'H', 'Year', 'Month', 'Day'))
   x
 }
 
@@ -125,6 +130,7 @@ set_colnames.WIN <- function(x, ...){
                                          "V15" = "WINCODE3",
                                          "V16" = "WINCODE4",
                                          "V17" = "WINCODE5"))
+  data.table::setkeyv(x$data, c('ID', 'Lon', 'Lat', 'H', 'Year', 'Month', 'Day'))
   x
 }
 
@@ -139,6 +145,7 @@ set_colnames.SSD <- function(x, ...){
                                          "V7" = "Day",
                                          "V8" = "SSD",
                                          "V9" = "SSDCODE1"))
+  data.table::setkeyv(x$data, c('ID', 'Lon', 'Lat', 'H', 'Year', 'Month', 'Day'))
   x
 }
 
@@ -157,6 +164,7 @@ set_colnames.GST <- function(x, ...){
                                          "V11" = "GSTCODE1",
                                          "V12" = "GSTCODE2",
                                          "V13" = "GSTCODE3"))
+  data.table::setkeyv(x$data, c('ID', 'Lon', 'Lat', 'H', 'Year', 'Month', 'Day'))
   x
 }
 
