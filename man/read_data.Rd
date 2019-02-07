@@ -8,8 +8,9 @@ read_data(fname)
 }
 \arguments{
 \item{fname}{Character. Full name of the file to be processed.}
-
-\item{as.data.table}{Logical. If \code{True}, a data.table will return.}
+}
+\value{
+A \code{cmdc} object.
 }
 \description{
 Read the meteorological data.
