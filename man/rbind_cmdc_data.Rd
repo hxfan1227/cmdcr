@@ -5,8 +5,12 @@
 \alias{merge_cmdc_data}
 \title{Combine cmdc data.table by rows or columns}
 \usage{
-rbind_cmdc_data(..., dtlist = NULL, dir, filepattern = c("PRS", "TEM",
-  "WIN", "GST", "PRE", "RHU", "EVP", "SSD"))
+rbind_cmdc_data(
+  ...,
+  dtlist = NULL,
+  dir,
+  filepattern = c("PRS", "TEM", "WIN", "GST", "PRE", "RHU", "EVP", "SSD")
+)
 
 merge_cmdc_data(..., dtlist = NULL, dir, year = NULL)
 }

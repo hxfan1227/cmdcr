@@ -4,8 +4,7 @@
 \alias{cal_wind_direction}
 \title{Covert wind direction code into degrees based on the base direction.}
 \usage{
-cal_wind_direction(x, base_direction = c("North", "South", "East",
-  "West"))
+cal_wind_direction(x, base_direction = c("North", "South", "East", "West"))
 }
 \arguments{
 \item{x}{Numeric. Wind direction code to be coverted.}
