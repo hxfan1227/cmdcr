@@ -12,7 +12,13 @@ rbind_cmdc_data(
   filepattern = c("PRS", "TEM", "WIN", "GST", "PRE", "RHU", "EVP", "SSD")
 )
 
-merge_cmdc_data(..., dtlist = NULL, dir, year = NULL)
+merge_cmdc_data(
+  ...,
+  dtlist = NULL,
+  dir,
+  filepatterns = c("PRS", "TEM", "WIN", "GST", "PRE", "RHU", "EVP", "SSD"),
+  year = NULL
+)
 }
 \arguments{
 \item{...}{(optional) List of \code{data.table} objects to be combined.}
@@ -22,6 +28,8 @@ merge_cmdc_data(..., dtlist = NULL, dir, year = NULL)
 \item{dir}{Character. The directory which contains the cmdc files.}
 
 \item{filepattern}{Character. Variable to be combined.}
+
+\item{filepatterns}{Character. Variables to be combined.}
 
 \item{year}{Numeric. The year of the data to be processed.}
 }
